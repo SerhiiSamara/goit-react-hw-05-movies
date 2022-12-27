@@ -2,7 +2,7 @@ import { toast } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 
 import { fetchTodayTrendingMovies } from 'Api';
-import {  Container } from './Home.styled';
+import { Container } from './Home.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const Home = () => {
@@ -13,7 +13,7 @@ export const Home = () => {
       try {
         const getMovies = await fetchTodayTrendingMovies();
         setMovies(
-          getMovies.map(({title, name, id}) => ({
+          getMovies.map(({ title, name, id }) => ({
             title: title || name,
             id: id,
           }))
@@ -23,8 +23,8 @@ export const Home = () => {
       }
     }
     getTodayTrandingMovies();
-	}, []);
-	
+  }, []);
+
   return (
     <Container>
       <h1>Trending today</h1>

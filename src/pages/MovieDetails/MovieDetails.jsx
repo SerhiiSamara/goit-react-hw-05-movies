@@ -1,6 +1,12 @@
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useParams, Link, useLocation } from 'react-router-dom';
+import {
+  Outlet,
+  useNavigate,
+  useParams,
+  Link,
+  useLocation,
+} from 'react-router-dom';
 
 import { fetchMovieDetails } from 'Api';
 import {
@@ -12,15 +18,14 @@ import {
   ItemLink,
 } from './MovieDetals.styled';
 
-  const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
-
+const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 export const MovieDetails = () => {
-	const { movieId } = useParams();
+  const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
-	const navigate = useNavigate();
-	const location = useLocation();
-	const backLinkHref = location.state.from;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const backLinkHref = location.state.from;
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -32,12 +37,11 @@ export const MovieDetails = () => {
       }
     }
     getMovieDetails();
-	}, [movieId]);
-	
-	
+  }, [movieId]);
+
   const handleClick = () => {
     navigate(backLinkHref);
-	};
+  };
 
   const {
     poster_path,
@@ -46,13 +50,11 @@ export const MovieDetails = () => {
     genres = [],
     vote_average,
   } = movieDetails;
-	const stringGenres = genres.map(genre => genre.name).join(',  ');
-	
+  const stringGenres = genres.map(genre => genre.name).join(',  ');
+
   return (
     <Container>
-      <Button onClick={handleClick} >
-        Go back
-      </Button>
+      <Button onClick={handleClick}>Go back</Button>
       <Wrap>
         <Image src={BASE_IMG_URL + poster_path} alt={original_title} />
         <div>
@@ -67,10 +69,14 @@ export const MovieDetails = () => {
       <p>Additional information</p>
       <ListLink>
         <ItemLink>
-          <Link to="cast" state={{ from: backLinkHref }}>Cast</Link>
+          <Link to="cast" state={{ from: backLinkHref }}>
+            Cast
+          </Link>
         </ItemLink>
         <ItemLink>
-          <Link to="reviews" state={{ from: backLinkHref }}>Reviews</Link>
+          <Link to="reviews" state={{ from: backLinkHref }}>
+            Reviews
+          </Link>
         </ItemLink>
       </ListLink>
       <Outlet />
