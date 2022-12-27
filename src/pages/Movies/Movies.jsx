@@ -13,7 +13,8 @@ export const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const getMovies = async () => {
+		const getMovies = async () => {
+			console.log(movieName);
       try {
         if (!movieName) {
           return;

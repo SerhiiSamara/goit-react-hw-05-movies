@@ -27,7 +27,7 @@ export const App = () => {
       </Routes>
       <Toaster
         toastOptions={{
-          duration: 5000,
+          duration: 3000,
           style: {
             background: '#363636',
             color: '#fff',
