@@ -48,7 +48,8 @@ export const MovieDetails = () => {
     original_title,
     overview,
     genres = [],
-    vote_average,
+		vote_average,
+		release_date,
   } = movieDetails;
   const stringGenres = genres.map(genre => genre.name).join(',  ');
 
@@ -58,7 +59,7 @@ export const MovieDetails = () => {
       <Wrap>
         <Image src={BASE_IMG_URL + poster_path} alt={original_title} />
         <div>
-          <h2>{original_title}</h2>
+          <h2>{original_title+'('+release_date?.slice(0, 4)+')'}</h2>
           <p>User score {Math.trunc(vote_average * 10)}%</p>
           <h3>Overview</h3>
           <p>{overview}</p>
