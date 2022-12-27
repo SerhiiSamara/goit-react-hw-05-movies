@@ -14,8 +14,9 @@ export const Movies = () => {
 
   useEffect(() => {
 		const getMovies = async () => {
-			console.log(movieName);
-      try {
+			console.log('movieName: ',movieName);
+			try {
+				console.log('In try movieName: ',movieName);
         if (!movieName) {
           return;
         }
