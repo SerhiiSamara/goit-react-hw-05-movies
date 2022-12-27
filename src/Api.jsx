@@ -41,6 +41,18 @@ export async function fetchCast(movieId) {
 			language: 'en-US',
     },
   };
-  const response = await axios.get(`${BASE_URL}movie/${movieId}/reviews`, options);
+	const response = await axios.get(`${BASE_URL}movie/${movieId}/credits`, options);
+  return response.data.cast;
+}
+
+export async function fetchMovies(searchQuery) {
+  const options = {
+    params: {
+      api_key: API_KEY,
+			language: 'en-US',
+			query: searchQuery,
+    },
+  };
+	const response = await axios.get(`${BASE_URL}search/movie/`, options);
   return response.data.results;
 }

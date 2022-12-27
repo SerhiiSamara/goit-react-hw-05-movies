@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-// import { Link } from "./Reviews.styled"
 import { fetchReviews } from 'Api';
 
 export const Reviews = () => {

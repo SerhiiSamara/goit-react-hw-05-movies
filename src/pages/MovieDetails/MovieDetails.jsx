@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useParams, Link } from 'react-router-dom';
+import { Outlet, useNavigate, useParams, Link, useLocation } from 'react-router-dom';
 
 import { fetchMovieDetails } from 'Api';
 import {
@@ -19,6 +19,8 @@ export const MovieDetails = () => {
 	const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
 	const navigate = useNavigate();
+	const location = useLocation();
+	const backLinkHref = location.state.from;
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -33,10 +35,9 @@ export const MovieDetails = () => {
 	}, [movieId]);
 	
 	
-
   const handleClick = () => {
-    navigate('/');
-  };
+    navigate(backLinkHref);
+	};
 
   const {
     poster_path,
@@ -47,15 +48,9 @@ export const MovieDetails = () => {
   } = movieDetails;
 	const stringGenres = genres.map(genre => genre.name).join(',  ');
 	
-	// if (Object.keys(movieDetails).length === 0) {
-  //   return <Navigate to="/" replace/>;
-  // }
-	// console.log(Object.keys(movieDetails).length);
-	
-
   return (
     <Container>
-      <Button onClick={handleClick} to="/">
+      <Button onClick={handleClick} >
         Go back
       </Button>
       <Wrap>
@@ -72,10 +67,10 @@ export const MovieDetails = () => {
       <p>Additional information</p>
       <ListLink>
         <ItemLink>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: backLinkHref }}>Cast</Link>
         </ItemLink>
         <ItemLink>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: backLinkHref }}>Reviews</Link>
         </ItemLink>
       </ListLink>
       <Outlet />

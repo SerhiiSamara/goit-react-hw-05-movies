@@ -2,8 +2,8 @@ import { toast } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 
 import { fetchTodayTrendingMovies } from 'Api';
-import { Link } from 'react-router-dom';
-import { Item, Container } from './Home.styled';
+import {  Container } from './Home.styled';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,18 +25,10 @@ export const Home = () => {
     getTodayTrandingMovies();
 	}, []);
 	
-console.log(movies)
-
   return (
     <Container>
       <h1>Trending today</h1>
-      <ul>
-        {movies.map(({ id, title }) => (
-          <Item key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
-          </Item>
-        ))}
-      </ul>
+      <MoviesList sortedMovies={movies} />
     </Container>
   );
 };
