@@ -16,13 +16,15 @@ export const Wrap = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 200px;
+  font-size: 25px;
+  min-width: 200px;
   margin-right: 30px;
+  background-color: #c1c1c1;
 `;
 
 export const ListLink = styled.ul`
-	border-bottom: solid 2px #c1c1c1;
-	padding-bottom:20px;
+  border-bottom: solid 2px #c1c1c1;
+  padding-bottom: 20px;
 `;
 
 export const ItemLink = styled.li`
