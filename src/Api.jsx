@@ -54,6 +54,5 @@ export async function fetchMovies(searchQuery) {
     },
   };
 	const response = await axios.get(`${BASE_URL}search/movie/`, options);
-	console.log(response)
   return response.data.results;
 }
