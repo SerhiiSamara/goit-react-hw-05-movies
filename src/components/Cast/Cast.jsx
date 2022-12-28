@@ -32,7 +32,7 @@ export const Cast = () => {
   }, [movieId]);
 
   if (Object.keys(cast).length === 0) {
-    return <p>We don't have any reviews for this movie.</p>;
+    return <p>We don't have any actors for this movie.</p>;
   }
 
   return (
